@@ -1,0 +1,58 @@
+{
+  "name": "claude-web-chat",
+  "displayName": "Claude Web Chat (Cookie Auth)",
+  "description": "Chat with Claude using browser session cookies - for experimentation only",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "claudeWebChat.openChat",
+        "title": "Claude: Open Chat Panel"
+      },
+      {
+        "command": "claudeWebChat.setCookie",
+        "title": "Claude: Set Session Cookie"
+      },
+      {
+        "command": "claudeWebChat.clearCookie",
+        "title": "Claude: Clear Session Cookie"
+      },
+      {
+        "command": "claudeWebChat.askSelection",
+        "title": "Claude: Ask About Selection"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "claudeWebChat.askSelection",
+          "when": "editorHasSelection",
+          "group": "claude"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "claudeWebChat.openChat",
+        "key": "ctrl+shift+c",
+        "mac": "cmd+shift+c"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.3.0"
+  }
+}
